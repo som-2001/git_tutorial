@@ -2,12 +2,7 @@ import { Box, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, redo, undo } from "./Redux/counterSlice";
 
-const shema = yup.object().shape({
-  file: yup.string().test((value) => {
-    if (value && value.type === "mp3") return true;
-    else return false;
-  }),
-});
+
 function App() {
   const { value, future, past } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
