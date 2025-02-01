@@ -38,7 +38,7 @@ function App() {
           }}
           onClick={(e) => dispatch(increment())}
         >
-          increment cherrypick
+          increment main 1
         </Button>
         <Button
           variant="contained"
@@ -51,7 +51,7 @@ function App() {
           }}
           onClick={(e) => dispatch(decrement())}
         >
-          decrement cherrypick
+          decrement main 1
         </Button>
       </Box>
 
