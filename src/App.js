@@ -43,7 +43,7 @@ function App() {
           }}
           onClick={(e) => dispatch(increment())}
         >
-          increment main pod er chul
+          increment main 1
         </Button>
         <Button
           variant="contained"
@@ -56,7 +56,7 @@ function App() {
           }}
           onClick={(e) => dispatch(decrement())}
         >
-          decrement main pod er chul
+          decrement main 1
         </Button>
       </Box>
 
