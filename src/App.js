@@ -43,7 +43,7 @@ function App() {
           }}
           onClick={(e) => dispatch(increment())}
         >
-          increment
+          increment main
         </Button>
         <Button
           variant="contained"
@@ -56,7 +56,7 @@ function App() {
           }}
           onClick={(e) => dispatch(decrement())}
         >
-          decrement
+          decrement main
         </Button>
       </Box>
 
