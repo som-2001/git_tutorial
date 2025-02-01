@@ -1,24 +1,101 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment, redo, undo } from "./Redux/counterSlice";
 
+const shema = yup.object().shape({
+  file: yup.string().test((value) => {
+    if (value && value.type === "mp3") return true;
+    else return false;
+  }),
+});
 function App() {
+  const { value, future, past } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        height: "50vh",
+        gap: "20px",
+        p: 3,
+      }}
+    >
+      <h3 style={{ fontSize: "2.5rem" }}>{value}</h3>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <Button
+          variant="contained"
+          sx={{
+            p: 2,
+            borderRadius: 3,
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onClick={(e) => dispatch(increment())}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          increment
+        </Button>
+        <Button
+          variant="contained"
+          disabled={value === 0}
+          sx={{
+            p: 2,
+            borderRadius: 3,
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onClick={(e) => dispatch(decrement())}
+        >
+          decrement
+        </Button>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <Button
+          variant="contained"
+          disabled={future.length === 0}
+          sx={{
+            p: 2,
+            borderRadius: 3,
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onClick={(e) => dispatch(redo())}
+        >
+          Redo
+        </Button>
+        <Button
+          variant="contained"
+          disabled={past.length === 0}
+          sx={{
+            p: 2,
+            borderRadius: 3,
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onClick={(e) => dispatch(undo())}
+        >
+          Undo
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
