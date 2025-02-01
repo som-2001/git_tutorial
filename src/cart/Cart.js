@@ -1,5 +1,5 @@
 export const Cart=()=>{
     return(
-        <h1>Cart from master.</h1>
+        <h1>i have updated the cart function from main branch.</h1>
     )
 }
